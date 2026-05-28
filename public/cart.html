@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Your PawShop shopping cart." />
+  <title>Shopping Cart – PawShop</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<!-- ─── NAVBAR ─── -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <a href="/" class="logo"><div class="logo-icon">🐾</div>Paw<span>Shop</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/">Home</a></li>
+    <li><a href="/products">Products</a></li>
+    <li><a href="/cart" class="active">Cart</a></li>
+    <li><a href="/checkout">Checkout</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="/cart" class="cart-pill">🛒 Cart &nbsp;<span id="cartCount">0</span></a>
+    <div class="hamburger" id="hamburger" role="button" tabindex="0"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- ─── PAGE HEADER ─── -->
+<header class="page-header" role="banner">
+  <h1>🛒 Shopping Cart</h1>
+  <p>Review your items before checkout</p>
+</header>
+
+<!-- ─── CART CONTENT (filled by cart.js) ─── -->
+<main id="cartMain" role="main">
+  <div class="loading" style="padding:80px;">
+    <div class="spinner"></div>
+    <p>Loading your cart…</p>
+  </div>
+</main>
+
+<!-- ─── FOOTER ─── -->
+<footer role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="/" class="logo">🐾 PawShop</a>
+      <p>Ireland's favourite online pet store.</p>
+    </div>
+    <div><h4>Quick Links</h4><ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/products">Products</a></li>
+    </ul></div>
+    <div><h4>Help</h4><ul>
+      <li><a href="#">Delivery Info</a></li>
+      <li><a href="#">Returns</a></li>
+    </ul></div>
+    <div><h4>Contact</h4><ul>
+      <li><a href="#">info@pawshop.ie</a></li>
+      <li><a href="#">Dublin, Ireland</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 PawShop &mdash; Developed by <strong style="color:#fff;">Grazielle Almeida</strong> | CCT College Dublin</p>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script src="/js/cart.js"></script>
+</body>
+</html>

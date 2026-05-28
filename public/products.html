@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Browse all PawShop products – premium pet food, toys, accessories and health products." />
+  <title>Products – PawShop</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<!-- ─── NAVBAR ─── -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <a href="/" class="logo"><div class="logo-icon">🐾</div>Paw<span>Shop</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/">Home</a></li>
+    <li><a href="/products" class="active">Products</a></li>
+    <li><a href="/cart">Cart</a></li>
+    <li><a href="/checkout">Checkout</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="/cart" class="cart-pill" aria-label="View cart">🛒 Cart &nbsp;<span id="cartCount">0</span></a>
+    <div class="hamburger" id="hamburger" role="button" tabindex="0"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- ─── PAGE HEADER ─── -->
+<header class="page-header" role="banner">
+  <h1>🛍️ All Products</h1>
+  <p>Find the perfect products for your beloved pets</p>
+</header>
+
+<!-- ─── MAIN ─── -->
+<main class="section" role="main">
+
+  <!-- Admin Price Update Panel -->
+  <details class="admin-panel">
+    <summary>⚙️ Admin Panel — Update Product Price (Market Rate Simulation)</summary>
+    <div class="admin-inner">
+      <div class="form-group">
+        <label for="priceProductId">Product ID</label>
+        <input type="number" id="priceProductId" placeholder="e.g. 1" min="1" style="width:120px;" />
+      </div>
+      <div class="form-group">
+        <label for="newPrice">New Price (€)</label>
+        <input type="number" id="newPrice" placeholder="e.g. 34.99" min="0.01" step="0.01" style="width:160px;" />
+      </div>
+      <button class="btn btn-ghost btn-sm" onclick="updatePrice()" style="background:#7C3AED;color:#fff;">Update Price</button>
+      <p id="priceUpdateMsg"></p>
+    </div>
+  </details>
+
+  <!-- Filters -->
+  <div class="filters-wrap" role="search" aria-label="Filter and search products">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Search products…" aria-label="Search products" />
+    </div>
+    <button class="filter-chip active" data-cat="all"        onclick="filterCat(this,'all')">All</button>
+    <button class="filter-chip"        data-cat="dogs"       onclick="filterCat(this,'dogs')">🐕 Dogs</button>
+    <button class="filter-chip"        data-cat="cats"       onclick="filterCat(this,'cats')">🐈 Cats</button>
+    <button class="filter-chip"        data-cat="toys"       onclick="filterCat(this,'toys')">🎾 Toys</button>
+    <button class="filter-chip"        data-cat="accessories" onclick="filterCat(this,'accessories')">🛏️ Accessories</button>
+    <button class="filter-chip"        data-cat="grooming"   onclick="filterCat(this,'grooming')">✂️ Grooming</button>
+    <button class="filter-chip"        data-cat="health"     onclick="filterCat(this,'health')">💊 Health</button>
+    <button class="filter-chip"        data-cat="fish"       onclick="filterCat(this,'fish')">🐠 Fish</button>
+  </div>
+
+  <p id="resultsCount" style="color:var(--grey);font-size:.85rem;margin-bottom:18px;font-weight:500;"></p>
+
+  <!-- Products Grid -->
+  <div class="products-grid" id="productsGrid">
+    <div class="loading"><div class="spinner"></div><p>Loading products from database…</p></div>
+  </div>
+</main>
+
+<!-- ─── FOOTER ─── -->
+<footer role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="/" class="logo">🐾 PawShop</a>
+      <p>Ireland's favourite online pet store.</p>
+    </div>
+    <div><h4>Shop</h4><ul>
+      <li><a href="/products?category=dogs">Dogs</a></li>
+      <li><a href="/products?category=cats">Cats</a></li>
+      <li><a href="/products?category=toys">Toys</a></li>
+    </ul></div>
+    <div><h4>Help</h4><ul>
+      <li><a href="#">Delivery</a></li>
+      <li><a href="#">Returns</a></li>
+      <li><a href="#">FAQ</a></li>
+    </ul></div>
+    <div><h4>Contact</h4><ul>
+      <li><a href="#">info@pawshop.ie</a></li>
+      <li><a href="#">Dublin, Ireland</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 PawShop &mdash; Developed by <strong style="color:#fff;">Grazielle Almeida</strong> | CCT College Dublin</p>
+    <div class="footer-badges"><span class="badge-pill">SSL Secure</span></div>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script src="/js/products.js"></script>
+</body>
+</html>

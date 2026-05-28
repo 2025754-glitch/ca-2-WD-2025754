@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PawShop secure checkout." />
+  <title>Checkout – PawShop</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<!-- ─── NAVBAR ─── -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <a href="/" class="logo"><div class="logo-icon">🐾</div>Paw<span>Shop</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/">Home</a></li>
+    <li><a href="/products">Products</a></li>
+    <li><a href="/cart">Cart</a></li>
+    <li><a href="/checkout" class="active">Checkout</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="/cart" class="cart-pill">🛒 Cart &nbsp;<span id="cartCount">0</span></a>
+    <div class="hamburger" id="hamburger" role="button" tabindex="0"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- ─── PAGE HEADER ─── -->
+<header class="page-header" role="banner">
+  <h1>💳 Secure Checkout</h1>
+  <p>Your order will be delivered in 3–5 business days across Ireland</p>
+</header>
+
+<!-- ─── CHECKOUT LAYOUT ─── -->
+<main role="main">
+  <div class="checkout-layout">
+
+    <!-- LEFT: Forms -->
+    <div>
+
+      <!-- Delivery -->
+      <div class="form-card">
+        <h3 class="form-card-title">📦 Delivery Details</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="firstName">First Name *</label>
+            <input type="text" id="firstName" placeholder="John" autocomplete="given-name" />
+            <span class="err-msg" id="firstNameErr"></span>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name *</label>
+            <input type="text" id="lastName" placeholder="Doe" autocomplete="family-name" />
+            <span class="err-msg" id="lastNameErr"></span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" placeholder="john@example.com" autocomplete="email" />
+            <span class="err-msg" id="emailErr"></span>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" placeholder="+353 87 123 4567" autocomplete="tel" />
+            <span class="err-msg" id="phoneErr"></span>
+          </div>
+          <div class="form-group full">
+            <label for="address">Street Address *</label>
+            <input type="text" id="address" placeholder="123 Main Street" autocomplete="street-address" />
+            <span class="err-msg" id="addressErr"></span>
+          </div>
+          <div class="form-group">
+            <label for="city">City *</label>
+            <input type="text" id="city" placeholder="Dublin" autocomplete="address-level2" />
+            <span class="err-msg" id="cityErr"></span>
+          </div>
+          <div class="form-group">
+            <label for="eircode">Eircode</label>
+            <input type="text" id="eircode" placeholder="D01 AB12" autocomplete="postal-code" />
+          </div>
+          <div class="form-group full">
+            <label for="country">Country *</label>
+            <select id="country" autocomplete="country">
+              <option value="IE" selected>🇮🇪 Ireland</option>
+              <option value="GB">🇬🇧 United Kingdom</option>
+              <option value="US">🇺🇸 United States</option>
+              <option value="FR">🇫🇷 France</option>
+              <option value="DE">🇩🇪 Germany</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment -->
+      <div class="form-card">
+        <h3 class="form-card-title">💳 Payment Details</h3>
+        <div class="secure-note">
+          🔒 This is a demo application — no real payment is processed.
+        </div>
+        <div class="form-grid">
+          <div class="form-group full">
+            <label for="cardName">Cardholder Name *</label>
+            <input type="text" id="cardName" placeholder="John Doe" autocomplete="cc-name" />
+            <span class="err-msg" id="cardNameErr"></span>
+          </div>
+          <div class="form-group full">
+            <label for="cardNumber">Card Number *</label>
+            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" autocomplete="cc-number" />
+            <span class="err-msg" id="cardNumberErr"></span>
+          </div>
+          <div class="form-group">
+            <label for="expiry">Expiry Date *</label>
+            <input type="text" id="expiry" placeholder="MM/YY" maxlength="5" autocomplete="cc-exp" />
+            <span class="err-msg" id="expiryErr"></span>
+          </div>
+          <div class="form-group">
+            <label for="cvv">CVV *</label>
+            <input type="text" id="cvv" placeholder="123" maxlength="4" autocomplete="cc-csc" />
+            <span class="err-msg" id="cvvErr"></span>
+          </div>
+        </div>
+
+        <!-- Payment method icons -->
+        <div style="display:flex;gap:10px;margin:18px 0;align-items:center;">
+          <span style="font-size:.75rem;color:var(--grey);font-weight:600;">We accept:</span>
+          <div style="display:flex;gap:8px;">
+            <div style="background:#1A1F71;color:#fff;padding:4px 10px;border-radius:6px;font-size:.7rem;font-weight:800;">VISA</div>
+            <div style="background:#EB001B;color:#fff;padding:4px 10px;border-radius:6px;font-size:.7rem;font-weight:800;">MC</div>
+            <div style="background:#003087;color:#fff;padding:4px 10px;border-radius:6px;font-size:.7rem;font-weight:800;">PayPal</div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" style="width:100%;font-size:1rem;padding:16px;" onclick="placeOrder()">
+          🛍️ Place Order
+        </button>
+      </div>
+    </div>
+
+    <!-- RIGHT: Summary -->
+    <div>
+      <div class="summary-card" id="checkoutSummary">
+        <h3>🧾 Order Summary</h3>
+        <div id="summaryItems">
+          <div class="loading"><div class="spinner"></div></div>
+        </div>
+      </div>
+
+      <!-- Trust section -->
+      <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-top:18px;">
+        <p style="font-size:.8rem;font-weight:700;color:var(--dark);margin-bottom:14px;">Why shop with PawShop?</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;gap:10px;align-items:center;font-size:.78rem;color:var(--grey);">
+            <span>🔒</span> 256-bit SSL encrypted checkout
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.78rem;color:var(--grey);">
+            <span>🚚</span> Free delivery on orders over €40
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.78rem;color:var(--grey);">
+            <span>🔄</span> 30-day hassle-free returns
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;font-size:.78rem;color:var(--grey);">
+            <span>⭐</span> Vet-approved products only
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ─── SUCCESS MODAL ─── -->
+<div class="modal-bg" id="successModal" style="display:none;" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div class="modal-icon">🎉</div>
+    <h2>Order Placed!</h2>
+    <p>Thank you for shopping at PawShop. Your pet goodies are on their way!</p>
+    <div class="order-box" id="orderDetails"></div>
+    <a href="/products" class="btn btn-primary btn-lg" style="width:100%;">Continue Shopping 🐾</a>
+  </div>
+</div>
+
+<!-- ─── EMPTY CART MODAL ─── -->
+<div class="modal-bg" id="emptyModal" style="display:none;" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div class="modal-icon">🛒</div>
+    <h2>Your Cart is Empty</h2>
+    <p>Add some products to your cart before checking out.</p>
+    <a href="/products" class="btn btn-primary btn-lg" style="width:100%;">Browse Products</a>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="/" class="logo">🐾 PawShop</a>
+      <p>Ireland's favourite online pet store.</p>
+    </div>
+    <div><h4>Quick Links</h4><ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/products">Products</a></li>
+      <li><a href="/cart">Cart</a></li>
+    </ul></div>
+    <div><h4>Help</h4><ul>
+      <li><a href="#">Delivery Info</a></li>
+      <li><a href="#">Returns</a></li>
+    </ul></div>
+    <div><h4>Contact</h4><ul>
+      <li><a href="#">info@pawshop.ie</a></li>
+      <li><a href="#">Dublin, Ireland</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 PawShop &mdash; Developed by <strong style="color:#fff;">Grazielle Almeida</strong> | CCT College Dublin</p>
+  </div>
+</footer>
+
+<script src="/js/main.js"></script>
+<script src="/js/checkout.js"></script>
+</body>
+</html>

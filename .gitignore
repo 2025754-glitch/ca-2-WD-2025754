@@ -1,0 +1,17 @@
+# Node modules – never commit these (too large)
+node_modules/
+
+# Runtime database file – regenerated automatically
+data.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*

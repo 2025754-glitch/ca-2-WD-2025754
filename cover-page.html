@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CCT Cover Page – Grazielle Almeida</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      font-size: 12pt;
+      color: #111;
+      background: #fff;
+    }
+
+    /* ── PAGE ── */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 20mm 22mm;
+      page-break-after: always;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #111;
+      padding-bottom: 14px;
+      margin-bottom: 30px;
+    }
+    .header-logo {
+      font-size: 22pt;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+    .header-logo span { color: #555; font-size: 11pt; font-weight: 400; display: block; margin-top: 2px; }
+    .header-right { text-align: right; font-size: 10pt; color: #444; line-height: 1.6; }
+
+    /* ── TITLE BLOCK ── */
+    .title-block {
+      text-align: center;
+      margin: 40px 0 36px;
+    }
+    .title-block h1 {
+      font-size: 22pt;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 8px;
+    }
+    .title-block h2 {
+      font-size: 14pt;
+      font-weight: 600;
+      color: #444;
+      margin-bottom: 4px;
+    }
+    .title-block p { font-size: 11pt; color: #666; }
+
+    /* ── INFO TABLE ── */
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+    }
+    .info-table tr { border-bottom: 1px solid #ddd; }
+    .info-table tr:last-child { border-bottom: none; }
+    .info-table td {
+      padding: 11px 14px;
+      font-size: 11pt;
+    }
+    .info-table td:first-child {
+      font-weight: 700;
+      width: 42%;
+      color: #333;
+      background: #f8f8f8;
+    }
+    .info-table td:last-child { color: #111; }
+
+    /* ── DECLARATION ── */
+    .declaration {
+      margin-top: 36px;
+      border: 1.5px solid #111;
+      border-radius: 6px;
+      padding: 18px 20px;
+      background: #fafafa;
+    }
+    .declaration h3 {
+      font-size: 11pt;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .declaration p {
+      font-size: 10pt;
+      color: #333;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+    .declaration p:last-child { margin-bottom: 0; }
+
+    /* ── SIGNATURE ── */
+    .signature-box {
+      display: flex;
+      gap: 60px;
+      margin-top: 28px;
+    }
+    .sig-item { flex: 1; }
+    .sig-item p { font-size: 10pt; color: #555; margin-bottom: 6px; }
+    .sig-line {
+      border-bottom: 1px solid #555;
+      height: 28px;
+    }
+    .sig-item span { font-size: 9.5pt; color: #777; }
+
+    /* ── AI APPENDIX ── */
+    .ai-section {
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 2px solid #ddd;
+    }
+    .ai-section h3 {
+      font-size: 12pt; font-weight: 700; margin-bottom: 14px;
+    }
+    .ai-row {
+      background: #f8f8f8;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+    }
+    .ai-row .label { font-size: 10pt; font-weight: 700; color: #333; margin-bottom: 6px; }
+    .ai-row .value { font-size: 10pt; color: #444; line-height: 1.6; }
+
+    /* ── PAGE 2 – REFERENCES ── */
+    .ref-page { }
+    .ref-page h2 { font-size: 16pt; font-weight: 700; margin-bottom: 8px; border-bottom: 2px solid #111; padding-bottom: 8px; }
+    .ref-page .subtitle { font-size: 10pt; color: #666; margin-bottom: 30px; }
+    .ref-list { list-style: none; }
+    .ref-list li {
+      font-size: 10.5pt;
+      line-height: 1.7;
+      color: #222;
+      margin-bottom: 16px;
+      padding-left: 24px;
+      text-indent: -24px;
+    }
+    .ref-list a { color: #0066cc; }
+
+    /* ── PRINT ── */
+    @media print {
+      body { background: #fff; }
+      .page { margin: 0; padding: 15mm 18mm; width: 100%; }
+    }
+
+    /* ── PRINT BUTTON ── */
+    .print-btn {
+      position: fixed;
+      top: 20px; right: 20px;
+      background: #111;
+      color: #fff;
+      border: none;
+      padding: 10px 22px;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 999;
+    }
+    .print-btn:hover { background: #333; }
+    @media print { .print-btn { display: none; } }
+  </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">🖨️ Save as PDF</button>
+
+<!-- ═══════════════════════════════════════════
+     PAGE 1 — COVER PAGE
+═══════════════════════════════════════════ -->
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-logo">
+      CCT
+      <span>College Dublin &nbsp;|&nbsp; Computing • IT • Business</span>
+    </div>
+    <div class="header-right">
+      Continuous Assessment<br>
+      Academic Year 2025/2026
+    </div>
+  </div>
+
+  <!-- Title -->
+  <div class="title-block">
+    <h1>PawShop</h1>
+    <h2>Full Stack E-Commerce Website</h2>
+    <p>CA2 — Individual Assignment</p>
+  </div>
+
+  <!-- Info table -->
+  <table class="info-table">
+    <tr><td>Programme Title</td>       <td>H.Dip. in Computing</td></tr>
+    <tr><td>Module Title</td>          <td>Web Development</td></tr>
+    <tr><td>Assignment Title</td>      <td>Full Stack Website (CA2)</td></tr>
+    <tr><td>Assignment Weighting</td>  <td>60%</td></tr>
+    <tr><td>Lecturer</td>              <td>Dr. Kislay Raj</td></tr>
+    <tr><td>Student Name</td>          <td>Grazielle Almeida</td></tr>
+    <tr><td>Student Number</td>        <td><!-- FILL IN YOUR STUDENT NUMBER --></td></tr>
+    <tr><td>Submission Date</td>       <td>30 May 2026</td></tr>
+    <tr><td>Delivery Mode</td>         <td>Full-Time (FT)</td></tr>
+    <tr><td>Technology Stack</td>      <td>Node.js, Express.js, JSON Database, HTML5, CSS3, JavaScript</td></tr>
+  </table>
+
+  <!-- Declaration -->
+  <div class="declaration">
+    <h3>Academic Integrity Declaration</h3>
+    <p>
+      I declare that this assignment is entirely my own work, except where I have duly acknowledged
+      the ideas or words of other sources. I have not submitted this work for any other assessment.
+    </p>
+    <p>
+      I understand that plagiarism, collusion, and copying are serious academic offences and I have
+      read and understood CCT College Dublin's policy on academic integrity. I acknowledge that any
+      use of Generative AI tools has been disclosed in the appendix of this submission, as required.
+    </p>
+    <div class="signature-box">
+      <div class="sig-item">
+        <p>Student Signature:</p>
+        <div class="sig-line"></div>
+        <span>Grazielle Almeida</span>
+      </div>
+      <div class="sig-item">
+        <p>Date:</p>
+        <div class="sig-line"></div>
+        <span>30 May 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Usage Appendix -->
+  <div class="ai-section">
+    <h3>Appendix — Generative AI Usage Statement</h3>
+
+    <div class="ai-row">
+      <div class="label">Tool Used</div>
+      <div class="value">Claude (Anthropic) — accessed via Claude Code desktop application</div>
+    </div>
+
+    <div class="ai-row">
+      <div class="label">Purpose</div>
+      <div class="value">Brainstorming the website concept, refining ideas for the e-commerce theme (PawShop), and getting information about technologies used (Node.js, Express.js, HTML/CSS/JS best practices).</div>
+    </div>
+
+    <div class="ai-row">
+      <div class="label">Prompts Used (summary)</div>
+      <div class="value">
+        1. "I need to create a full-stack e-commerce website for my CA2 assignment. Can you help me choose a theme?"<br>
+        2. "What technologies should I use for the server and database?"<br>
+        3. "Help me understand how to structure an Express.js server with REST API routes."<br>
+        4. "What are some good colour schemes and layouts for a pet shop website?"
+      </div>
+    </div>
+
+    <div class="ai-row">
+      <div class="label">Output from AI</div>
+      <div class="value">Suggestions for the pet shop theme, technology stack recommendations (Node.js + Express + JSON file database), guidance on REST API structure, and colour palette ideas. All code was written and adapted by the student based on course knowledge and the AI's explanations.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PAGE 2 — HARVARD REFERENCES
+═══════════════════════════════════════════ -->
+<div class="page ref-page">
+
+  <div class="header">
+    <div class="header-logo">
+      CCT
+      <span>College Dublin &nbsp;|&nbsp; Computing • IT • Business</span>
+    </div>
+    <div class="header-right">
+      Grazielle Almeida<br>
+      Web Development — CA2
+    </div>
+  </div>
+
+  <h2>References</h2>
+  <p class="subtitle">Harvard Referencing Style — all sources accessed May 2026</p>
+
+  <ul class="ref-list">
+    <li>
+      Fielding, R.T. and Taylor, R.N. (2002) 'Principled design of the modern Web architecture',
+      <em>ACM Transactions on Internet Technology</em>, 2(2), pp. 115–150.
+      doi: 10.1145/514183.514185.
+    </li>
+    <li>
+      Mozilla Developer Network (2024) <em>HTML: HyperText Markup Language</em>. MDN Web Docs.
+      Available at: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">https://developer.mozilla.org/en-US/docs/Web/HTML</a>
+      (Accessed: 28 May 2026).
+    </li>
+    <li>
+      Mozilla Developer Network (2024) <em>CSS: Cascading Style Sheets</em>. MDN Web Docs.
+      Available at: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">https://developer.mozilla.org/en-US/docs/Web/CSS</a>
+      (Accessed: 28 May 2026).
+    </li>
+    <li>
+      Mozilla Developer Network (2024) <em>JavaScript</em>. MDN Web Docs.
+      Available at: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">https://developer.mozilla.org/en-US/docs/Web/JavaScript</a>
+      (Accessed: 28 May 2026).
+    </li>
+    <li>
+      OpenJS Foundation (2024) <em>Express — Fast, unopinionated, minimalist web framework for Node.js</em>.
+      Available at: <a href="https://expressjs.com">https://expressjs.com</a>
+      (Accessed: 28 May 2026).
+    </li>
+    <li>
+      OpenJS Foundation (2024) <em>Node.js — JavaScript runtime built on Chrome's V8 JavaScript engine</em>.
+      Available at: <a href="https://nodejs.org">https://nodejs.org</a>
+      (Accessed: 28 May 2026).
+    </li>
+    <li>
+      Google Fonts (2024) <em>Poppins — Google Fonts</em>.
+      Available at: <a href="https://fonts.google.com/specimen/Poppins">https://fonts.google.com/specimen/Poppins</a>
+      (Accessed: 28 May 2026).
+    </li>
+    <li>
+      Unsplash (2024) <em>Beautiful free images and pictures</em>. Unsplash Inc.
+      Available at: <a href="https://unsplash.com">https://unsplash.com</a>
+      (Accessed: 28 May 2026).
+    </li>
+    <li>
+      Anthropic (2024) <em>Claude — AI assistant by Anthropic</em>.
+      Available at: <a href="https://claude.ai">https://claude.ai</a>
+      (Accessed: 28 May 2026).
+      [Used for brainstorming and research as per the AI usage statement above.]
+    </li>
+    <li>
+      W3Schools (2024) <em>HTML Tutorial</em>.
+      Available at: <a href="https://www.w3schools.com/html">https://www.w3schools.com/html</a>
+      (Accessed: 28 May 2026).
+    </li>
+  </ul>
+
+</div>
+
+</body>
+</html>
