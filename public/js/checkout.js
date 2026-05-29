@@ -105,21 +105,34 @@ function validate() {
 
 // ─── REAL-TIME INPUT FILTERS ──────────────────────────────────────────────────
 
-// Letters only — block numbers as user types
+// Letters only — show error message if user types a number
 ['firstName','lastName','city','cardName'].forEach(function(id) {
   document.getElementById(id)?.addEventListener('input', function () {
-    this.value = this.value.replace(/[0-9]/g, '');
+    if (/[0-9]/.test(this.value)) {
+      showErr(id, 'Only letters and spaces allowed here');
+    } else {
+      clearErr(id);
+    }
   });
 });
 
-// Phone — block letters as user types (allow digits, +, -, spaces, parentheses)
+// Phone — show error message if user types a letter
 document.getElementById('phone')?.addEventListener('input', function () {
-  this.value = this.value.replace(/[a-zA-Z]/g, '');
+  if (/[a-zA-Z]/.test(this.value)) {
+    showErr('phone', 'Only numbers allowed here');
+  } else {
+    clearErr('phone');
+  }
 });
 
-// CVV — numbers only
+// CVV — show error message if user types a letter
 document.getElementById('cvv')?.addEventListener('input', function () {
-  this.value = this.value.replace(/\D/g, '').slice(0, 4);
+  this.value = this.value.slice(0, 4);
+  if (/[a-zA-Z]/.test(this.value)) {
+    showErr('cvv', 'Only numbers allowed here');
+  } else {
+    clearErr('cvv');
+  }
 });
 
 // Auto-format card number — numbers only + spaces every 4 digits
