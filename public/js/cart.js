@@ -14,12 +14,15 @@ const CAT_EMOJIS = {
   accessories:'🛏️', grooming:'✂️', health:'💊', fish:'🐠'
 };
 
+let cartTotal = 0; // store total for promo calculation
+
 async function loadCart() {
   const main = document.getElementById('cartMain');
   try {
     const res  = await fetch(`/api/cart/${getSessionId()}`);
     const json = await res.json();
     const items = json.data, total = json.total;
+    cartTotal = total; // save for promo use
 
     if (!items || items.length === 0) {
       main.innerHTML = `
@@ -186,9 +189,31 @@ function applyPromo() {
   const code = document.getElementById('promoInput')?.value.trim().toUpperCase();
   const msg  = document.getElementById('promoMsg');
   if (!msg) return;
+
   if (code === 'PAWSHOP10') {
+    const discount    = cartTotal * 0.10;
+    const delivery    = cartTotal >= 40 ? 0 : 4.99;
+    const discounted  = cartTotal - discount;
+    const grandTotal  = (discounted + delivery).toFixed(2);
+
+    // Update total displayed
+    const amountEl = document.querySelector('.summary-row.total .amount');
+    if (amountEl) amountEl.textContent = `€${grandTotal}`;
+
+    // Add discount row if not already there
+    const totalRow = document.querySelector('.summary-row.total');
+    if (totalRow && !document.getElementById('discountRow')) {
+      const discRow = document.createElement('div');
+      discRow.id = 'discountRow';
+      discRow.className = 'summary-row';
+      discRow.style.color = '#16A34A';
+      discRow.innerHTML = `<span>🎉 Discount (10%)</span><span style="font-weight:700;">-€${discount.toFixed(2)}</span>`;
+      totalRow.parentNode.insertBefore(discRow, totalRow);
+    }
+
     msg.style.color = '#16A34A';
-    msg.textContent = '✅ Code applied! 10% discount at checkout.';
+    msg.textContent = '✅ Code applied! 10% discount added.';
+    document.getElementById('promoInput').disabled = true;
   } else {
     msg.style.color = '#EF4444';
     msg.textContent = '❌ Invalid promo code.';
