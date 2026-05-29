@@ -58,8 +58,17 @@ function val(id) { return document.getElementById(id)?.value.trim() || ''; }
 function validate() {
   clearAll();
   let ok = true;
-  if (!val('firstName'))  { showErr('firstName','First name is required'); ok=false; }
-  if (!val('lastName'))   { showErr('lastName', 'Last name is required');  ok=false; }
+
+  // Letters only fields
+  const nameRegex = /^[a-zA-ZÀ-ÿ\s\-']+$/;
+
+  const fn = val('firstName');
+  if (!fn) { showErr('firstName','First name is required'); ok=false; }
+  else if (!nameRegex.test(fn)) { showErr('firstName','First name must contain letters only'); ok=false; }
+
+  const ln = val('lastName');
+  if (!ln) { showErr('lastName','Last name is required'); ok=false; }
+  else if (!nameRegex.test(ln)) { showErr('lastName','Last name must contain letters only'); ok=false; }
 
   const em = val('email');
   if (!em) { showErr('email','Email is required'); ok=false; }
@@ -70,8 +79,14 @@ function validate() {
   else if (!/^[\d\s\+\-\(\)]{7,}$/.test(ph)) { showErr('phone','Enter a valid phone number'); ok=false; }
 
   if (!val('address'))  { showErr('address','Address is required'); ok=false; }
-  if (!val('city'))     { showErr('city',   'City is required');    ok=false; }
-  if (!val('cardName')) { showErr('cardName','Cardholder name is required'); ok=false; }
+
+  const ci = val('city');
+  if (!ci) { showErr('city','City is required'); ok=false; }
+  else if (!nameRegex.test(ci)) { showErr('city','City must contain letters only'); ok=false; }
+
+  const cn_name = val('cardName');
+  if (!cn_name) { showErr('cardName','Cardholder name is required'); ok=false; }
+  else if (!nameRegex.test(cn_name)) { showErr('cardName','Name must contain letters only'); ok=false; }
 
   const cn = val('cardNumber').replace(/\s/g,'');
   if (!cn) { showErr('cardNumber','Card number is required'); ok=false; }
@@ -88,11 +103,31 @@ function validate() {
   return ok;
 }
 
-// Auto-format card number
+// ─── REAL-TIME INPUT FILTERS ──────────────────────────────────────────────────
+
+// Letters only — block numbers as user types
+['firstName','lastName','city','cardName'].forEach(function(id) {
+  document.getElementById(id)?.addEventListener('input', function () {
+    this.value = this.value.replace(/[0-9]/g, '');
+  });
+});
+
+// Phone — block letters as user types (allow digits, +, -, spaces, parentheses)
+document.getElementById('phone')?.addEventListener('input', function () {
+  this.value = this.value.replace(/[a-zA-Z]/g, '');
+});
+
+// CVV — numbers only
+document.getElementById('cvv')?.addEventListener('input', function () {
+  this.value = this.value.replace(/\D/g, '').slice(0, 4);
+});
+
+// Auto-format card number — numbers only + spaces every 4 digits
 document.getElementById('cardNumber')?.addEventListener('input', function () {
   this.value = this.value.replace(/\D/g,'').replace(/(.{4})/g,'$1 ').trim().slice(0,19);
 });
-// Auto-format expiry
+
+// Auto-format expiry — numbers only + slash after 2 digits
 document.getElementById('expiry')?.addEventListener('input', function () {
   let v = this.value.replace(/\D/g,'');
   if (v.length >= 3) v = v.slice(0,2)+'/'+v.slice(2,4);
